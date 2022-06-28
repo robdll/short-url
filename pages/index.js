@@ -15,27 +15,33 @@ export default function Home() {
       <h1 className={styles.title}>Short Url Microservice</h1>
 
       <main className={styles.main}>
-        <p className={styles.description}>Example Usage:</p>
+        <p className={styles.description}>How to use:</p>
         <span className={styles.span}>
-          Send a <b>POST</b> request to the following url:
+          Send a <b>POST</b> request containing the url you want to shorten to
+          the following url:
         </span>
         <code className={styles.code}>[project url]/api/shorturl</code>
-        <span className={styles.span}>
-          containing the url you want to shorten. Example:
-        </span>
+        <p className={styles.span}>
+          <b>NOTE:</b> the provided url need to match the following regex:
+        </p>
+        <code
+          className={styles.code}
+        >{`/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/`}</code>
+
+        <p className={styles.description}>Example Body:</p>
         <code className={styles.code}>
           {`{`}
-          &quot;url&quot;:&quot;www.github.com/robdll&quot;
+          &quot;original_url&quot;:&quot;https://robertodilillo.dev&quot;
           {`}`}
         </code>
 
-        <p className={styles.description}>Example Output:</p>
+        <p className={styles.description}>Example Response:</p>
         <code className={styles.code}>
           {`{`}
           <br />
-          &quot;original_url&quot;:&quot;www.github.com/robdll&quot;,
+          &quot;original_url&quot;:&quot;https://robertodilillo.dev&quot;,
           <br />
-          &quot;shorturl&quot;:&quot;1&quot;,
+          &quot;shorturl&quot;:&quot;10&quot;,
           <br />
           {`}`}
         </code>
