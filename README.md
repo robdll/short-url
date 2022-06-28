@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **Short Url**
 
-## Getting Started
+Microservice node API featuring NextJs and mongoDB to shorten long url
 
-First, run the development server:
+[Demo](https://short-url-six-sigma.vercel.app/)
+
+## **Installation**
+
+1. clone this repository
 
 ```bash
-npm run dev
-# or
+git clone https://github.com/robdll/short-url
+```
+
+2. move to the project directory and install dependecies
+
+```bash
+cd short-url
+yarn
+```
+
+3. run locally
+
+```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. visit [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# **API usage**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### **POST endpoint**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+> `<projecturl>`/api/shorturl
 
-## Learn More
+### **Request body**
 
-To learn more about Next.js, take a look at the following resources:
+json object containing the following key/value
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`url`: a valid url
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+example: `{ url: "https://www.google.com" }`
 
-## Deploy on Vercel
+### **Response**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+json object containing the following key/value
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`original_url`: original user url  
+`short_url`: id of the url
+
+### **Response example**
+
+```
+{
+    "original_url":"www.google.com",
+    "short_url": 650
+}
+```
+
+## Deploy
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+
+Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
