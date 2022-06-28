@@ -41,9 +41,19 @@ export default function Home() {
         </code>
 
         <p className={styles.description}>Try it out</p>
-        <Link href="api/shorturl/1">
-          <a className={styles.link}>/api/shorturl/1</a>
-        </Link>
+
+        <form className={styles.form} action="/api/shorturl" method="post">
+          <label htmlFor="url">Url: </label>
+          <input
+            className={styles.input}
+            name="url"
+            type="text"
+            placeholder="Enter a url to shorten"
+          />
+          <button className={styles.btn} type="submit">
+            POST URL
+          </button>
+        </form>
       </main>
     </div>
   );
