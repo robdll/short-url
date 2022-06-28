@@ -27,14 +27,12 @@ export default function Home() {
         <code
           className={styles.code}
         >{`/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/`}</code>
-
         <p className={styles.description}>Example Body:</p>
         <code className={styles.code}>
           {`{`}
           &quot;original_url&quot;:&quot;https://robertodilillo.dev&quot;
           {`}`}
         </code>
-
         <p className={styles.description}>Example Response:</p>
         <code className={styles.code}>
           {`{`}
@@ -45,9 +43,14 @@ export default function Home() {
           <br />
           {`}`}
         </code>
-
+        <span className={styles.span}>
+          Short url can is now available via <b>GET</b> request to the following
+          url:
+        </span>
+        <Link href={`/api/shorturl/10`} passHref>
+          <a className={styles.link}>[projectURL]/api/shorturl/10</a>
+        </Link>
         <p className={styles.description}>Try it out</p>
-
         <form className={styles.form} action="/api/shorturl" method="post">
           <label htmlFor="original_url">Url: </label>
           <input
