@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 const UrlSchema = new mongoose.Schema({
-  url: {
+  original_url: {
     type: String,
     required: [true, "Please provide a valid url"],
   },
-  shortUrl: {
-    type: String,
+  short_url: {
+    type: Number,
   },
 });
 
-UrlSchema.path("url").validate((val) => {
+UrlSchema.path("original_url").validate((val) => {
   const urlRegex =
     /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
   return urlRegex.test(val);
