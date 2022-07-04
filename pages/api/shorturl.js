@@ -1,15 +1,20 @@
 import dbConnect from "../../lib/dbConnect";
 import Url from "../../models/Url";
 import Counter from "../../models/counters";
-import NextCors from "nextjs-cors";
+import Cors from "cors";
+import initMiddleware from "../../lib/init-middleware";
+
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with POST and OPTIONS
+    methods: ["POST", "OPTIONS"],
+  })
+);
 
 export default async function handler(req, res) {
-  await NextCors(req, res, {
-    // Options
-    methods: ["POST"],
-    origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  });
+  await cors(req, res);
+
   await dbConnect();
   try {
     const short_url = await Counter.findOne({})

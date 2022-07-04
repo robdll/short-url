@@ -7,9 +7,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "mongoose": "^6.0.11",
     "next": "12.1.4",
-    "nextjs-cors": "^2.1.1",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
