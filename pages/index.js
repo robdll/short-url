@@ -30,7 +30,7 @@ export default function Home() {
         <p className={styles.description}>Example Body:</p>
         <code className={styles.code}>
           {`{`}
-          &quot;original_url&quot;:&quot;https://robertodilillo.dev&quot;
+          &quot;url&quot;:&quot;https://robertodilillo.dev&quot;
           {`}`}
         </code>
         <p className={styles.description}>Example Response:</p>
