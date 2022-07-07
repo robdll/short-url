@@ -52,10 +52,10 @@ export default function Home() {
         </Link>
         <p className={styles.description}>Try it out</p>
         <form className={styles.form} action="/api/shorturl" method="post">
-          <label htmlFor="original_url">Url: </label>
+          <label htmlFor="url">Url: </label>
           <input
             className={styles.input}
-            name="original_url"
+            name="url"
             type="text"
             placeholder="Enter a url to shorten"
           />
