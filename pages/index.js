@@ -55,7 +55,7 @@ export default function Home() {
           <label htmlFor="url">Url: </label>
           <input
             className={styles.input}
-            name="url"
+            name="original_url"
             type="text"
             placeholder="Enter a url to shorten"
           />
