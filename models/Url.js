@@ -12,7 +12,7 @@ const UrlSchema = new mongoose.Schema({
 
 UrlSchema.path("original_url").validate((val) => {
   const urlRegex =
-    /(https|http):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+    /(https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
   return urlRegex.test(val);
 }, "invalid url.");
 

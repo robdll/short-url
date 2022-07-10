@@ -28,17 +28,26 @@ export default async function handler(req, res) {
   await cors(req, res);
 
   await dbConnect();
+
   try {
+    const url = req.body.url || req.body.original_url;
+
+    const urlRegex =
+      /(https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+    if (!urlRegex.test(url)) {
+      return res.status(200).json({ error: `invalid url` });
+    }
+
     const short_url = await Counter.findOne({})
       .sort({ seq_value: -1 })
       .limit(1);
 
-    const url = await Url.create({
-      original_url: req.body.url || req.body.original_url,
+    const createdUrl = await Url.create({
+      original_url: url,
     });
 
     res.status(201).json({
-      original_url: url.original_url,
+      original_url: createdUrl.original_url,
       short_url: short_url.seq_value + 1,
     });
   } catch (error) {
