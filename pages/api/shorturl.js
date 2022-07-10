@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       .limit(1);
 
     const url = await Url.create({
-      url: req.body.url || req.body.original_url,
+      original_url: req.body.url || req.body.original_url,
     });
 
     res.status(201).json({
