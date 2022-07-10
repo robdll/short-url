@@ -13,6 +13,18 @@ const cors = initMiddleware(
 );
 
 export default async function handler(req, res) {
+  // Preflight Check:
+  if (req.method == "OPTIONS") {
+    res.setHeader("Allow", "POST");
+    return res.status(202).json({});
+  }
+
+  // Allow only POST Methods
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+  }
+
   await cors(req, res);
 
   await dbConnect();
